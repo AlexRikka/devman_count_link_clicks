@@ -1,7 +1,6 @@
 import requests
 import os
 from dotenv import load_dotenv
-load_dotenv()
 
 
 def is_bitlink(token, link):
@@ -31,8 +30,9 @@ def shorten_link(token, link):
 
 
 if __name__ == '__main__':
-    user_input = input("Введите ссылку: ")
+    load_dotenv()
     token = os.getenv("TOKEN")
+    user_input = input("Введите ссылку: ")
     bitlink = user_input
     if not is_bitlink(token, user_input):
         try:
