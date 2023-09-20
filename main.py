@@ -31,18 +31,18 @@ def shorten_link(bitly_access_token, link):
 
 def main():
     load_dotenv()
-    BITLY_ACCESS_TOKEN = os.getenv("BITLY_ACCESS_TOKEN")
+    bitly_access_token = os.environ['BITLY_ACCESS_TOKEN']
     user_input = input("Введите ссылку: ")
     bitlink = user_input
-    if is_bitlink(BITLY_ACCESS_TOKEN, user_input):
+    if is_bitlink(bitly_access_token, user_input):
         try:
-            clicks_count = count_clicks(BITLY_ACCESS_TOKEN, bitlink)
+            clicks_count = count_clicks(bitly_access_token, bitlink)
             print('Количество переходов по короткой ссылке ', clicks_count)
         except requests.exceptions.HTTPError as err:
             raise SystemExit(err)
     else:
         try:
-            bitlink = shorten_link(BITLY_ACCESS_TOKEN, user_input)
+            bitlink = shorten_link(bitly_access_token, user_input)
             print('Битлинк ', bitlink)
         except requests.exceptions.HTTPError as err:
             raise SystemExit(err)
