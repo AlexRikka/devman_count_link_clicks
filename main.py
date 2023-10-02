@@ -1,5 +1,6 @@
 import requests
 import os
+import argparse
 from dotenv import load_dotenv
 
 
@@ -32,7 +33,11 @@ def shorten_link(bitly_access_token, link):
 def main():
     load_dotenv()
     bitly_access_token = os.environ['BITLY_ACCESS_TOKEN']
-    user_input = input("Введите ссылку: ")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('link',
+                        help='Ссылка для сокращения или подсчета кликов')
+    user_input = parser.parse_args().link
+    
     bitlink = user_input
     if is_bitlink(bitly_access_token, user_input):
         try:
