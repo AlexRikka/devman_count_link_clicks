@@ -16,15 +16,14 @@ pip install -r requirements.txt
 BITLY_ACCESS_TOKEN=uz7Q2caPeEqHzj2m0aci2ppEikNWZo4hPWjNG3rD
 ```
 
-Запустите скрипт в командной строке
+Запустите скрипт в командной строке, указав вашу ссылку следующим образом:
 ```bash
-python main.py
+python main.py <ваша_ссылка>
 ```
 
 ## Пример работы скрипта
 Сократить ссылку https://ishikawajet.wordpress.com/:
-![Alt text](image.png)
+![Alt text](image-1.png)
 
 Узнать количество переходов по короткой ссылке bit.ly/3Pk06kG:
 ![Alt text](image-3.png)
-
