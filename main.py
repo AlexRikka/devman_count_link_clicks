@@ -37,20 +37,16 @@ def main():
     parser.add_argument('link',
                         help='Ссылка для сокращения или подсчета кликов')
     user_input = parser.parse_args().link
-    
-    bitlink = user_input
-    if is_bitlink(bitly_access_token, user_input):
-        try:
-            clicks_count = count_clicks(bitly_access_token, bitlink)
+
+    try:
+        if is_bitlink(bitly_access_token, user_input):
+            clicks_count = count_clicks(bitly_access_token, user_input)
             print('Количество переходов по короткой ссылке ', clicks_count)
-        except requests.exceptions.HTTPError as err:
-            raise SystemExit(err)
-    else:
-        try:
+        else:
             bitlink = shorten_link(bitly_access_token, user_input)
             print('Битлинк ', bitlink)
-        except requests.exceptions.HTTPError as err:
-            raise SystemExit(err)
+    except requests.exceptions.HTTPError:
+        print("Вы ввели неправильную ссылку.")
 
 
 if __name__ == '__main__':
